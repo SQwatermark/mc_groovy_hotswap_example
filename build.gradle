@@ -87,20 +87,10 @@ repositories {
     // }
 }
 
-configurations {
-    library
-    implementation.extendsFrom library
-}
-minecraft.runs.all {
-    lazyToken('minecraft_classpath') {
-        configurations.library.copyRecursive().resolve().collect { it.absolutePath }.join(File.pathSeparator)
-    }
-}
-
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.1.43'
     annotationProcessor(group: 'org.apache.groovy', name: 'groovy', version: '4.0.7')
-    library(group: 'org.apache.groovy', name: 'groovy-jsr223', version: '4.0.7')
+    minecraftLibrary(group: 'org.apache.groovy', name: 'groovy-jsr223', version: '4.0.7')
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
